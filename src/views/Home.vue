@@ -1,18 +1,47 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container class="home-container" column align-center justify-start>
+    <v-btn
+      color="primary"
+      dark
+      @click="dialogOuter = true"
+    >
+      Create poll
+    </v-btn>
+
+    <v-dialog
+      ref="dialog-outer"
+      v-model="dialogOuter"
+      max-width="600"
+      :fullscreen="$vuetify.breakpoint.xsOnly"
+    >
+      <dialog-create-poll @closeDialog="dialogOuter = false" />
+    </v-dialog>     
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import DialogCreatePoll from './CreateDatePoll'
 
 export default {
-  name: 'home',
   components: {
-    HelloWorld
+    DialogCreatePoll
+  },
+  data(){
+    return {
+      dialogOuter: false,
+    }
+  },
+  methods: {
+    test(){
+      console.log("clicked");
+    }
   }
 }
 </script>
+
+<style scoped>
+.home-container {
+  margin: 0 auto;
+  /* background: lightgray; */
+}
+</style>

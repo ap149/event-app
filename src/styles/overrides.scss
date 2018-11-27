@@ -1,0 +1,7 @@
+$primary-color:green;
+
+td {
+  .v-btn--active.accent {
+    background-color: $primary-color !important;
+  }
+}
